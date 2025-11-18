@@ -1,0 +1,45 @@
+{
+	"office": {
+		"location": { "ui:field": "LocationPicker" }
+	},
+	"sensors": {
+		"ui:widget": "SelectWidget",
+		"ui:options": {
+			"lazy": true,
+			"multi": true,
+			"transformation": {
+				"dataset": {
+					"endpoints": {
+						"name": "endpoints",
+						"sourceName": "endpoints",
+						"params": {
+							"serviceName": "EPR",
+							"appName": "[your-app-name]",
+							"withMetadata": true
+						}
+					}
+				},
+				"select": {
+					"endpointIds": {
+						"type": "JSONPath",
+						"value": "$.endpoints.*.endpointId"
+					},
+					"endpointsDisplayNames": {
+						"type": "JSONPath",
+						"value": "$.endpoints.*.metadata.name"
+					}
+				},
+				"updates": [
+					{
+						"attribute": "enum",
+						"value": "${endpointIds}"
+					},
+					{
+						"attribute": "enumNames",
+						"value": "${endpointsDisplayNames}"
+					}
+				]
+			}
+		}
+	}
+}

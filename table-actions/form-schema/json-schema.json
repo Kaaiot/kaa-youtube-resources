@@ -1,0 +1,39 @@
+{
+	"type": "object",
+	"properties": {
+		"office": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"title": "Name"
+				},
+				"location": {
+					"type": "object",
+					"properties": {
+						"latitude": {
+							"type": "number",
+							"title": "Latitude"
+						},
+						"longitude": {
+							"type": "number",
+							"title": "Longitude"
+						}
+					},
+					"title": "Location",
+					"required": ["latitude", "longitude"]
+				},
+				"counter": {
+					"type": "number",
+					"title": "Counter",
+					"default": 0
+				}
+			},
+			"title": "Office",
+			"required": ["name", "counter"]
+		},
+		"sensors": {
+			"type": "string"
+		}
+	}
+}
